@@ -1,0 +1,54 @@
+No.,Tag,Description
+1,PPN,Proper nouns
+2,CLN,Collective nouns
+3,CMN,Common nouns
+4,MTN,Material nouns
+5,ABN,Abstract nouns
+6,RFP,Reflexive Pronoun
+7,EM,Emphatic Pronoun
+8,RLP,Relative Pronouns
+9,INP,Interrogative Pronouns
+10,DMP,Demonstrative Pronouns
+11,POP,Possessive Pronoun
+12,CAV,Causative Verb
+13,TRV,Transitive verb
+14,ITV,Intransitive verb
+15,DTV,Ditransitive verb
+16,ADJ,Adjective
+17,CMA,Comparative Adjective marker
+18,SPA,Superlative Adjective marker
+19,AD,Adverb
+20,ADT,Adverb of Time
+21,ADM,Adverb of Manner
+22,ADP,Adverb of Place
+23,ADF,Adverb of frequency
+24,ADD,Adverb of degree
+25,1PSG,1st Person singular common gender
+26,1PPG,1st Person plural common gender
+27,2PG,2nd Person singular/plural common gender
+28,2PF,2nd Person singular/plural Feminine gender
+29,2PM,2nd Person singular/plural Masculine gender
+30,3PSF,3rd Person singular Feminine gender
+31,3PSM,3rd Person singular Masculine gender
+32,3PPG,3rd Person plural common Gender
+33,3PSG,3rd Person singular common Gender
+34,VPT,Verb, present tense
+35,VPP,Verb, present progressive participle
+36,VST,Verb, past tense
+37,VSP,Verb, past perfective participle
+38,VFT,Verb, future tense
+39,Mod,Modalities
+40,Neg,Negation
+41,CLF,Classifier
+42,COC,Coordinating conjunction
+43,SUC,Subordinating conjunction
+44,CRC,Correlative conjunction
+45,CN,Cardinal Number
+46,ON,Ordinal number
+47,QNT,Quantifiers
+48,CO,Copula
+49,PaV,Passive Voice
+50,COM,Complementizer
+51,FR,Foreign words
+52,SYM,Symbols
+53,IN,Preposition
