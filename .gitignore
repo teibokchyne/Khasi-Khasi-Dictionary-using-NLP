@@ -1,0 +1,23 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore environment files
+.env
+
+# Ignore OS or IDE-specific files
+.DS_Store
+*.log
+.vscode/
+
+# Ignore build/output folders
+/dist
+/build
+/downloads
+/downloads_newspapers
+/downloads_ocr
+/downloads_text
+/khasi-env 
+/outputs
+
+Records_Dictionary.docx
