@@ -25,6 +25,10 @@ First iteration in trying to create a khasi-khasi dictionary
         collected_vocabulary - vocabulary collected from files in full_sentences folder
 
 # Activities Log
+    10.6.2025
+        # Pay over ₹4000 to openai to use gpt to clean the corpus of OCR errors.
+        # 10000 token limit reached in one day. Only 10 files cleaned.
+        # Manually clean the vocabulary file (outputs\collected_vocabulary\khasi_vocab.txt) to keep only the valid words existing in the Khasi language. Separate valid from invalid words. Remove all sentences with invalid words from corpus. Substitute some words that may be misread.
     9.6.2025
         # use tesseract and clean files to collect full sentences for semantic training
     1.5.2025

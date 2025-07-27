@@ -1,0 +1,98 @@
+14.6.2025
+	I wanted to remove all special characters that I could not see but the computer could that were preventing me from 
+	extracting the words from the sentences. The VSCode was running too slow and the RAM and CPU were occupied by VSCode 
+	once I started to run the code for cleaning using BART. Therefore I used Kaggle to run the code for me. 
+
+12.6.2025
+	why is this creating so much extra spaces between words where it does not exist in the original text?
+
+	# Select all the words that need to replaced and replace them in the full_text.txt
+	input_file = r"outputs\collected_vocabulary\khasi_vocab_without_counter.txt"
+	map_words_to_replace = dict()
+	with open(input_file,'r',encoding='utf-8') as f:
+		for line in f:
+			tm = line.split(":")
+			if len(tm[-1])>1:
+				new_word = tm[-1][2:].strip()
+				to_replace = tm[0].strip()
+				map_words_to_replace[to_replace]=new_word
+
+	with open(r"outputs\full_text\full_text.txt",'r',encoding='utf-8') as full_text,\
+		open(r"outputs\full_text\full_text2.txt",'w',encoding='utf-8') as full_text2:
+		for line in full_text:
+			words = [word.strip() for word in line.split()]
+			new_words=[]
+			for word in words:
+				if word in map_words_to_replace:
+					new_words.append(map_words_to_replace[word])
+				else:
+					new_words.append(word)
+			full_text2.write(" ".join(new_words)+"\n")
+
+	splitting on space caused all tabs, newlines etc. to collapse.
+		The reason you're seeing **extra spaces** is due to this line:
+
+		```python
+		words = [word.strip() for word in line.split()]
+		```
+
+		### 🔍 Why this causes issues:
+
+		* `line.split()` splits on **any whitespace**, collapsing all runs of spaces or tabs into a single delimiter.
+		* `word.strip()` removes all leading/trailing spaces from each word — which might be **unnecessary** or even destructive if you want to preserve formatting.
+		* Then, `" ".join(new_words)` forcibly **replaces all original spacing** with single spaces.
+
+		This destroys the original spacing and formatting.
+
+		---
+
+		### ✅ Goal:
+
+		If you want to **preserve original spacing** exactly as in the file, **you shouldn't split on whitespace**. Instead, use **regex substitution** or **replace whole words directly in the line**.
+
+		---
+
+		### ✅ Recommended Fix using regex:
+
+		```python
+		import re
+
+		input_file = r"outputs\collected_vocabulary\khasi_vocab_without_counter.txt"
+		map_words_to_replace = dict()
+
+		with open(input_file, 'r', encoding='utf-8') as f:
+			for line in f:
+				tm = line.strip().split(":")
+				if len(tm) > 2:
+					to_replace = tm[0].strip()
+					new_word = ":".join(tm[2:]).strip()
+					map_words_to_replace[to_replace] = new_word
+
+		# Compile regex for exact word replacement
+		pattern = re.compile(r'\b(' + '|'.join(re.escape(k) for k in map_words_to_replace) + r')\b')
+
+		def replace_match(match):
+			return map_words_to_replace[match.group(0)]
+
+		with open(r"outputs\full_text\full_text.txt", 'r', encoding='utf-8') as full_text, \
+			open(r"outputs\full_text\full_text2.txt", 'w', encoding='utf-8') as full_text2:
+			for line in full_text:
+				replaced_line = pattern.sub(replace_match, line)
+				full_text2.write(replaced_line)
+		```
+
+		---
+
+		### ✅ Advantages:
+
+		* **Preserves original spacing** and line formatting.
+		* Only **replaces whole words**, not substrings.
+		* More robust for real-world text.
+
+		Let me know if any of the words to replace may contain regex symbols or span punctuation — I can adjust the regex further.
+
+10.6.2025
+	To make the job of selecting the valid words, invalid words, proper nouns, unclear meaning words, and substitution words, I created the code in 5.4_verify_vocabulary. 
+	This reduced the frustration with having to manually put all the words into their categories. 
+	I created a new file containing all the words, I only needed to input a w in the proper option and later on can use python to segragate the words.
+	I used tabs to separate the options for legibility and easier marking.
